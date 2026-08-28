@@ -55,7 +55,7 @@ function header(prefix, active){
   return `<header class="site-header" id="siteHeader">
   <div class="header-inner">
     <a href="${prefix}projects.html" class="header-logo">
-      <img src="${prefix}assets/joya-logo.png" alt="JOYA">
+      <img src="${prefix}assets/joya-logo.svg" alt="JOYA">
     </a>
     <nav class="header-nav">
       ${navLinks}
@@ -66,7 +66,7 @@ function header(prefix, active){
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-top">
-    <img src="${prefix}assets/joya-logo.png" alt="JOYA" style="height:14px;">
+    <img src="${prefix}assets/joya-logo.svg" alt="JOYA" style="height:14px;">
     <button class="mobile-close" id="mobileClose" aria-label="Close menu">Close</button>
   </div>
   <nav class="mobile-menu-links">
