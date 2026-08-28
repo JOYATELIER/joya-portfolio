@@ -1,0 +1,77 @@
+JOYA — cómo cambiar la tipografía del sitio
+============================================
+
+El sitio usa dos tipografías:
+  - "Archivo"  -> títulos, navegación, textos del índice de proyectos
+  - "Inter"    -> párrafos largos (About, descripciones de proyecto)
+
+Las dos están centralizadas en DOS líneas de styles.css (al principio
+del archivo, dentro de :root):
+
+    --font-display: 'Archivo', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+Todo el resto del CSS usa var(--font-display) / var(--font-body) en
+vez de nombrar la fuente directamente — así que para cambiar la
+tipografía de TODO el sitio alcanza con tocar esas dos líneas. No hace
+falta que sea de Google Fonts: podés usar cualquier fuente, sea
+gratuita o comprada, siempre que tengas el archivo de la fuente.
+
+
+OPCIÓN A — Cambiar a otra fuente de Google Fonts (más simple)
+----------------------------------------------------------------
+
+1. Buscá la fuente en fonts.google.com y copiá el link <link> que te
+   da (algo como family=NombreFuente:wght@400;500;600).
+
+2. Reemplazá esa línea en el <head> de CADA archivo .html del sitio
+   (index.html, projects.html, studio.html, contact.html, y — importante—
+   en build-project-pages.mjs, dentro de la constante HEAD_FONTS, para
+   que las páginas de proyecto generadas también la usen).
+
+3. En styles.css, cambiá:
+       --font-display: 'NombreFuente', sans-serif;
+   (y/o --font-body, según cuál quieras reemplazar)
+
+4. Si editaste build-project-pages.mjs, corré "node build-project-pages.mjs"
+   para regenerar las páginas de proyecto (o simplemente subí el cambio
+   a GitHub y Vercel lo regenera solo).
+
+
+OPCIÓN B — Usar un archivo de fuente propio (comprada, o de la marca)
+----------------------------------------------------------------------
+
+1. Conseguí el archivo en formato .woff2 (es el más liviano y el que
+   soportan todos los navegadores actuales). Si te dan .otf o .ttf,
+   se puede convertir a .woff2 gratis en https://cloudconvert.com/ttf-to-woff2
+
+2. Creá la carpeta assets/fonts/ y poné el archivo ahí, por ejemplo:
+       assets/fonts/MiFuente-Regular.woff2
+       assets/fonts/MiFuente-Bold.woff2
+
+3. Arriba de todo en styles.css (antes de ":root{"), agregá un bloque
+   @font-face por cada peso que tengas, así:
+
+       @font-face {
+         font-family: 'MiFuente';
+         src: url('assets/fonts/MiFuente-Regular.woff2') format('woff2');
+         font-weight: 400;
+         font-display: swap;
+       }
+       @font-face {
+         font-family: 'MiFuente';
+         src: url('assets/fonts/MiFuente-Bold.woff2') format('woff2');
+         font-weight: 700;
+         font-display: swap;
+       }
+
+4. Cambiá la variable correspondiente:
+       --font-display: 'MiFuente', sans-serif;
+
+5. Ya no hace falta el <link> de Google Fonts para esa tipografía —
+   podés borrarlo del <head> de los .html si reemplazaste las dos
+   (Archivo e Inter). Si solo reemplazaste una, dejá el link de la que
+   sigue viniendo de Google Fonts.
+
+6. Subí los cambios a GitHub (styles.css + la carpeta assets/fonts/) —
+   Vercel se encarga del resto.
