@@ -49,62 +49,89 @@ imagen (la 01) es también la que se usa como preview en el índice de
 /projects.
 
 
-3) ANTES DE PONER LAS FOTOS: OPTIMIZARLAS
+3) ANTES DE PONER LAS FOTOS: OPTIMIZARLAS (recomendado, no obligatorio)
 
 Las fotos que salen de cámara o de Drive suelen pesar varios MB cada
-una — eso hace que el sitio cargue lento. Antes de copiarlas a
-assets/images/, pasalas por el optimizador (achica el tamaño ~90% sin
-pérdida visible):
+una — eso hace que el sitio cargue lento. Lo ideal es achicarlas antes
+de subirlas. Dos formas, según si hay alguien técnico disponible:
+
+  SIN TERMINAL (cualquiera puede hacerlo):
+  Antes de subir cada foto a GitHub, exportala/redimensionala a un
+  ancho máximo de ~2000-2400px y calidad ~80% con cualquier editor
+  (Photoshop, Lightroom "Export", Preview de Mac, o una web gratuita
+  como squoosh.app). No es obligatorio — si subís el archivo pesado
+  tal cual, el sitio va a funcionar igual, solo va a cargar más lento.
+
+  CON TERMINAL (si alguien técnico ayuda con la carga):
+  Hay un script que hace esto automático para una carpeta entera,
+  manteniendo los nombres (y por lo tanto el orden) intactos:
 
     cd "JOYA"
+    npm install          (la primera vez, para instalar la herramienta de imagen)
     node optimize-images.mjs <carpeta-con-las-fotos-originales> assets/images/<slug-del-proyecto>
 
-Por ejemplo, si tenés las fotos de "Providència" en una carpeta
-temporal ya numeradas (01-fachada.jpg, 02-living.jpg, ...):
+  Por ejemplo, si las fotos de "Providència" están en una carpeta
+  temporal ya numeradas (01-fachada.jpg, 02-living.jpg, ...):
 
     node optimize-images.mjs "C:\ruta\a\providencia-fotos" assets/images/providencia
 
-Esto convierte todo a JPG, limita el lado más largo a 2400px y
-comprime a calidad 82 — manteniendo los nombres de archivo (y por lo
-tanto el orden) intactos.
+  Esto convierte todo a JPG, limita el lado más largo a 2400px y
+  comprime a calidad 82 (esto SÍ corre en tu computadora, no hace
+  falta para que el sitio funcione — es solo para dejar las fotos
+  livianas antes de subirlas a GitHub).
 
 
-4) DESPUÉS DE TOCAR FOTOS O DATOS: REGENERAR EL SITIO
+4) DESPUÉS DE TOCAR FOTOS O DATOS: SE REGENERA SOLO
 
 El sitio es estático — las páginas de proyecto (projects/*.html) y las
 filas del índice (projects.html) se generan automáticamente a partir
 de las fotos en assets/images/ y de los datos en projects.json. Nunca
-edites projects/<slug>.html a mano: se pisa la próxima vez que corras
-el generador.
+edites projects/<slug>.html a mano: se pisa en el próximo deploy.
 
-Después de agregar/quitar/reordenar fotos, o de editar projects.json
-(título, ubicación, año, descripción, etc.), corré:
+NO hace falta correr ningún comando para que esto pase: cada vez que
+subís cambios a la rama "main" de GitHub (ya sea con git, o subiendo
+archivos directo desde la web de GitHub), Vercel los detecta solo,
+corre el generador y publica el sitio actualizado en 1-2 minutos.
 
-    cd "JOYA"
-    node build-project-pages.mjs
+Es decir, el flujo del día a día para alguien sin conocimientos
+técnicos es:
 
-Esto reescribe las 9 páginas de proyecto y el índice.
+    1. Entrar al repositorio en github.com
+    2. Ir a la carpeta assets/images/<slug-del-proyecto>/
+    3. "Add file" -> "Upload files" -> arrastrar las fotos ya
+       nombradas con el número que corresponda (ver punto 2)
+    4. Confirmar el commit (botón verde "Commit changes")
+    5. Esperar ~1-2 minutos y refrescar el sitio
+
+No hace falta instalar nada, ni usar la terminal, para este paso.
 
 
 5) AGREGAR UN PROYECTO NUEVO
 
 a) Creá la carpeta assets/images/<slug-nuevo>/ con las fotos ya
-   optimizadas y numeradas (pasos 2 y 3).
-b) Sumá un objeto al final de projects.json con estos campos:
+   numeradas (punto 2), subiéndolas por la web de GitHub como en el
+   punto 4.
+b) Editá projects.json directo en GitHub (botón del lápiz, arriba a la
+   derecha del archivo) y sumá un objeto al final con estos campos:
    slug, title, role (la descripción corta), client, location,
-   category, year, credit.
-c) Corré node build-project-pages.mjs.
+   category, year, credit. Guardá el commit.
 
-El proyecto va a aparecer en /projects automáticamente, en el mismo
-orden en que aparece dentro de projects.json (ese orden también define
-la navegación "Previous / Next" al pie de cada página de proyecto).
+Eso es todo — Vercel regenera el sitio solo. El proyecto nuevo va a
+aparecer en /projects en el mismo orden en que quedó dentro de
+projects.json (ese orden también define la navegación "Previous /
+Next" al pie de cada página de proyecto).
 
 
-6) VER LOS CAMBIOS
+6) VER EL SITIO EN VIVO / EN LOCAL
 
-El sitio se sirve desde la raíz del workspace (un nivel arriba de esta
-carpeta). Si el servidor no está corriendo:
+El sitio publicado está en: https://joya-portfolio.vercel.app
+(o el dominio propio, una vez que esté conectado).
 
+Para probar cambios en tu computadora ANTES de subirlos a GitHub
+(opcional, solo si estás editando con git localmente):
+
+    cd "JOYA"
+    node build-project-pages.mjs
     cd ..
     node serve.mjs
 

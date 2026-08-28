@@ -1,0 +1,11 @@
+{
+  "name": "joya-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build-project-pages.mjs"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}

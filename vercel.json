@@ -1,0 +1,5 @@
+{
+  "buildCommand": "node build-project-pages.mjs",
+  "installCommand": "echo 'no install needed'",
+  "outputDirectory": "."
+}

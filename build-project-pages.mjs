@@ -6,20 +6,12 @@
 // ============================================================
 import fs from 'node:fs';
 import path from 'node:path';
-import sharp from 'sharp';
 
 const projects = JSON.parse(fs.readFileSync('projects.json', 'utf8'));
 
-async function ensureFallback(){
-  const file = 'assets/images/_fallback.jpg';
-  if (fs.existsSync(file)) return;
-  const svg = `<svg width="1400" height="1400" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100%" height="100%" fill="#EDEDEA"/>
-    <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="26" fill="#B9B9B3"
-      text-anchor="middle" dominant-baseline="middle" letter-spacing="2">JOYA</text>
-  </svg>`;
-  await sharp(Buffer.from(svg)).jpeg({ quality: 82 }).toFile(file);
-}
+// assets/images/_fallback.jpg ships committed in the repo (used when a
+// project has no photos yet) — this script has no npm dependencies on
+// purpose, so it can run unmodified in Vercel's build step.
 
 const IMG_RE = /^(\d+)(-.+)?\.(jpe?g|png|webp)$/i;
 
@@ -160,8 +152,6 @@ function replaceBetweenMarkers(filePath, startMarker, endMarker, newContent){
 }
 
 async function build(){
-  await ensureFallback();
-
   fs.mkdirSync('projects', { recursive: true });
   projects.forEach((project, i) => {
     const prev = projects[i - 1] || null;
