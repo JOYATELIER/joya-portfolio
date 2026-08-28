@@ -1,5 +1,5 @@
-JOYA — cómo agregar/editar las fotos de un proyecto
-=====================================================
+JOYA — cómo agregar/quitar/editar proyectos y sus fotos
+=========================================================
 
 1) UBICACIÓN
 
@@ -106,20 +106,58 @@ técnicos es:
 No hace falta instalar nada, ni usar la terminal, para este paso.
 
 
-5) AGREGAR UN PROYECTO NUEVO
+5) AGREGAR, QUITAR, EDITAR O REORDENAR UN PROYECTO
 
-a) Creá la carpeta assets/images/<slug-nuevo>/ con las fotos ya
-   numeradas (punto 2), subiéndolas por la web de GitHub como en el
-   punto 4.
-b) Editá projects.json directo en GitHub (botón del lápiz, arriba a la
-   derecha del archivo) y sumá un objeto al final con estos campos:
-   slug, title, role (la descripción corta), client, location,
-   category, year, credit. Guardá el commit.
+Todo esto se hace editando UN solo archivo: projects.json (está en la
+raíz de la carpeta JOYA). Es una lista de bloques, uno por proyecto,
+en este formato:
 
-Eso es todo — Vercel regenera el sitio solo. El proyecto nuevo va a
-aparecer en /projects en el mismo orden en que quedó dentro de
-projects.json (ese orden también define la navegación "Previous /
-Next" al pie de cada página de proyecto).
+    {
+      "slug": "nombre-tecnico",
+      "title": "Nombre del Proyecto",
+      "role": "Descripción corta del alcance del trabajo",
+      "client": "Private client",
+      "location": "Ciudad, País",
+      "category": "Residential / Retail / Design / etc.",
+      "year": "2026",
+      "credit": "Photo: Fulano de Tal"
+    },
+
+Para editarlo en GitHub: entrás al archivo projects.json en
+github.com, apretás el ícono del lápiz (editar) arriba a la derecha,
+hacés el cambio, y confirmás el commit abajo de la página. No hace
+falta terminal para nada de esto.
+
+  a) AGREGAR un proyecto nuevo:
+     1. Creá la carpeta assets/images/<slug-nuevo>/ con las fotos ya
+        numeradas (punto 2), subiéndolas por la web de GitHub (punto 4).
+     2. En projects.json, copiá y pegá un bloque entero como el de
+        arriba (con sus llaves { }), cambiá los datos, y agregale una
+        coma después del bloque anterior para separarlo.
+
+  b) QUITAR un proyecto:
+     Borrá su bloque completo de projects.json (desde la { hasta la }
+     que le corresponde, incluyendo la coma de separación si queda
+     una de más o de menos). La carpeta de fotos en assets/images/ se
+     puede dejar así nomás — si no está referenciada en projects.json
+     ya no aparece en el sitio, aunque los archivos sigan en el repo.
+
+  c) EDITAR datos de un proyecto existente (título, año, descripción,
+     categoría, créditos, etc.):
+     Cambiá el valor que corresponda dentro de su bloque.
+     IMPORTANTE: si cambiás el "slug", la carpeta de fotos en
+     assets/images/ tiene que renombrarse exactamente igual, sino el
+     proyecto se queda sin fotos.
+
+  d) REORDENAR los proyectos:
+     El orden en que aparecen en /projects (y la navegación "Previous
+     / Next" al pie de cada ficha) es el mismo orden en que están los
+     bloques dentro de projects.json, de arriba a abajo. Para cambiar
+     el orden, hay que cortar y pegar un bloque entero a otra posición
+     de la lista.
+
+En los cuatro casos: guardado el cambio en GitHub, Vercel regenera el
+sitio solo en 1-2 minutos — no hace falta correr nada más (ver punto 4).
 
 
 6) VER EL SITIO EN VIVO / EN LOCAL
