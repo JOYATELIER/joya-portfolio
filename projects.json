@@ -1,0 +1,92 @@
+[
+  {
+    "slug": "bar-club-mediterraneo",
+    "title": "Bar Club Mediterráneo",
+    "role": "Architecture and interior design",
+    "client": "Private client",
+    "location": "Barcelona",
+    "category": "Retail",
+    "year": "2025",
+    "credit": "Photo: Sara Masó"
+  },
+  {
+    "slug": "maria-agullo-01",
+    "title": "María Agulló 01",
+    "role": "Architecture design and project's development for a renovation and conversion of an apartment into two units",
+    "client": "Private client",
+    "location": "Barcelona",
+    "category": "Residential",
+    "year": "2025",
+    "credit": "Photo: Sara Masó"
+  },
+  {
+    "slug": "providencia",
+    "title": "Providència",
+    "role": "Architecture design and project's development for a restoration and interior design of an apartment.",
+    "client": "Private client",
+    "location": "Barcelona",
+    "category": "Residential",
+    "year": "2015",
+    "credit": "Photo: Joya"
+  },
+  {
+    "slug": "hospitalet",
+    "title": "Hospitalet",
+    "role": "Architecture design and project's development for a restoration and interior design of an apartment.",
+    "client": "Private client",
+    "location": "L'Hospitalet de Llobregat",
+    "category": "Residential",
+    "year": "2016",
+    "credit": "Images and progress photos: Joya"
+  },
+  {
+    "slug": "ramon-berenguer",
+    "title": "Ramon Berenguer",
+    "role": "Architecture design and project's development for a restoration and interior design of an apartment.",
+    "client": "Private client",
+    "location": "Barcelona",
+    "category": "Residential",
+    "year": "2016",
+    "credit": "Images and progress photos: Joya"
+  },
+  {
+    "slug": "santa-terese-villa-joya",
+    "title": "Santa Terese Villa Joya",
+    "role": "Architecture design and project's development for a restoration of an historical Villa in Rio de Janeiro.",
+    "client": "Private client",
+    "location": "Barcelona",
+    "category": "Residential",
+    "year": "2016",
+    "credit": "Images and progress photos: Joya"
+  },
+  {
+    "slug": "coac-biennal-joven-arquitectos",
+    "title": "COAC Biennal Joven Arquitectos",
+    "role": "Set design and production with FOFO.",
+    "client": "",
+    "location": "Barcelona",
+    "category": "Design and gastronomic project",
+    "year": "2025",
+    "credit": "Images: Martina Orska"
+  },
+  {
+    "slug": "mesa-mm",
+    "title": "Mesa MM",
+    "role": "Furniture design",
+    "client": "",
+    "location": "Rimini",
+    "category": "Design",
+    "year": "2025",
+    "credit": "Images and progress photos: Joya"
+  },
+  {
+    "slug": "provenca",
+    "title": "Provença",
+    "role": "Architecture design and project's development for a restoration and interior design of an apartment.",
+    "client": "Private client",
+    "location": "Barcelona",
+    "category": "Interior design",
+    "year": "2016",
+    "credit": "Project: Joya with Óscar Fonollosa Font"
+  }
+]

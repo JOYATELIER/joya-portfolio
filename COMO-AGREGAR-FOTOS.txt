@@ -1,0 +1,111 @@
+JOYA — cómo agregar/editar las fotos de un proyecto
+=====================================================
+
+1) UBICACIÓN
+
+Cada proyecto tiene su propia carpeta de imágenes:
+
+    JOYA/assets/images/<slug-del-proyecto>/
+
+El "slug" es el nombre técnico del proyecto (sin acentos, en minúsculas,
+con guiones). Los 9 que ya existen son:
+
+    bar-club-mediterraneo
+    maria-agullo-01
+    providencia
+    hospitalet
+    ramon-berenguer
+    santa-terese-villa-joya
+    coac-biennal-joven-arquitectos
+    mesa-mm
+    provenca
+
+Para agregar fotos a un proyecto que ya existe, poné los archivos
+directamente en esa carpeta (reemplazando los placeholders grises que
+hay ahora). Para un proyecto nuevo, creá la carpeta con ese mismo patrón
+de nombre y sumá el proyecto a projects.json (ver punto 4).
+
+
+2) CÓMO NOMBRAR LOS ARCHIVOS — así se controla el orden
+
+Los archivos se muestran en el carrusel en el orden que indica el
+número al principio del nombre. La descripción después del guión es
+opcional, solo para que vos te ubiques al mirar la carpeta:
+
+    01-fachada.jpg
+    02-vista-aerea.jpg
+    03-living.jpg
+    04.jpg              <- también vale sin descripción
+
+No hace falta que los números salgan consecutivos sin saltos, pero es
+más prolijo si lo están. Para reordenar fotos, es solo cuestión de
+renombrar los números.
+
+A diferencia del sitio de Sean Harrison, acá NO existe el sufijo "-c"
+(no hay un carousel del home que curar aparte): en JOYA, todas las
+fotos que pongas en la carpeta de un proyecto entran directo al
+carrusel de ESE proyecto, en el orden de sus números. La primera
+imagen (la 01) es también la que se usa como preview en el índice de
+/projects.
+
+
+3) ANTES DE PONER LAS FOTOS: OPTIMIZARLAS
+
+Las fotos que salen de cámara o de Drive suelen pesar varios MB cada
+una — eso hace que el sitio cargue lento. Antes de copiarlas a
+assets/images/, pasalas por el optimizador (achica el tamaño ~90% sin
+pérdida visible):
+
+    cd "JOYA"
+    node optimize-images.mjs <carpeta-con-las-fotos-originales> assets/images/<slug-del-proyecto>
+
+Por ejemplo, si tenés las fotos de "Providència" en una carpeta
+temporal ya numeradas (01-fachada.jpg, 02-living.jpg, ...):
+
+    node optimize-images.mjs "C:\ruta\a\providencia-fotos" assets/images/providencia
+
+Esto convierte todo a JPG, limita el lado más largo a 2400px y
+comprime a calidad 82 — manteniendo los nombres de archivo (y por lo
+tanto el orden) intactos.
+
+
+4) DESPUÉS DE TOCAR FOTOS O DATOS: REGENERAR EL SITIO
+
+El sitio es estático — las páginas de proyecto (projects/*.html) y las
+filas del índice (projects.html) se generan automáticamente a partir
+de las fotos en assets/images/ y de los datos en projects.json. Nunca
+edites projects/<slug>.html a mano: se pisa la próxima vez que corras
+el generador.
+
+Después de agregar/quitar/reordenar fotos, o de editar projects.json
+(título, ubicación, año, descripción, etc.), corré:
+
+    cd "JOYA"
+    node build-project-pages.mjs
+
+Esto reescribe las 9 páginas de proyecto y el índice.
+
+
+5) AGREGAR UN PROYECTO NUEVO
+
+a) Creá la carpeta assets/images/<slug-nuevo>/ con las fotos ya
+   optimizadas y numeradas (pasos 2 y 3).
+b) Sumá un objeto al final de projects.json con estos campos:
+   slug, title, role (la descripción corta), client, location,
+   category, year, credit.
+c) Corré node build-project-pages.mjs.
+
+El proyecto va a aparecer en /projects automáticamente, en el mismo
+orden en que aparece dentro de projects.json (ese orden también define
+la navegación "Previous / Next" al pie de cada página de proyecto).
+
+
+6) VER LOS CAMBIOS
+
+El sitio se sirve desde la raíz del workspace (un nivel arriba de esta
+carpeta). Si el servidor no está corriendo:
+
+    cd ..
+    node serve.mjs
+
+Y abrís http://localhost:3000/JOYA/projects.html

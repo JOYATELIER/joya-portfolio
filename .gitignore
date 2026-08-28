@@ -1,0 +1,7 @@
+# Working files not used by the live site
+website_assets/
+reference screenshots/
+
+# OS
+.DS_Store
+Thumbs.db
