@@ -131,7 +131,8 @@ ${footer(prefix)}
 function indexRow(project){
   const preview = previewFor(project);
   return `    <li>
-      <div class="index-row" data-preview="${preview}" data-href="projects/${project.slug}.html">
+      <div class="index-row" data-preview="${preview}" data-href="projects/${project.slug}.html"
+        data-title="${project.title}" data-category="${project.category}" data-year="${project.year}">
         <div class="index-row-media"><img src="${preview}" alt="" loading="lazy"></div>
         <span class="p-title">${project.title}</span>
         <span class="p-meta">${project.category}</span>

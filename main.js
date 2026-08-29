@@ -47,6 +47,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- Project index: sort by column ---------- */
+  const indexHead = document.querySelector('.index-head');
+  const indexUl = document.querySelector('.index-list ul');
+  if (indexHead && indexUl){
+    let sortKey = null, sortDir = 1;
+    const items = Array.from(indexUl.children);
+
+    indexHead.querySelectorAll('[data-sort]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.sort;
+        sortDir = (sortKey === key) ? sortDir * -1 : 1;
+        sortKey = key;
+
+        indexHead.querySelectorAll('[data-sort]').forEach(b => b.removeAttribute('data-dir'));
+        btn.setAttribute('data-dir', sortDir === 1 ? 'asc' : 'desc');
+
+        const sorted = items.slice().sort((a, b) => {
+          const va = a.querySelector('.index-row').dataset[key];
+          const vb = b.querySelector('.index-row').dataset[key];
+          if (key === 'year') return (parseInt(va, 10) - parseInt(vb, 10)) * sortDir;
+          return va.localeCompare(vb, 'es', { sensitivity: 'base' }) * sortDir;
+        });
+        sorted.forEach(li => indexUl.appendChild(li));
+      });
+    });
+  }
+
   /* ---------- Project carousel ---------- */
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

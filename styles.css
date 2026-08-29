@@ -193,6 +193,44 @@ h1,h2,h3,p{ margin:0; }
 }
 
 .index-list{ padding-block: clamp(1.5rem, 4vh, 3rem); }
+
+.index-head{
+  display: none;
+  grid-template-columns: 3.2fr 1.3fr 1.1fr 0.55fr;
+  gap: var(--gutter);
+  padding-bottom: 0.75rem;
+}
+@media (min-width: 900px){
+  .index-head{ display: grid; }
+}
+.index-head-btn, .index-head-label{
+  font-family: var(--font-display);
+  font-size: var(--fs-eyebrow);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--gray);
+  text-align: left;
+}
+.index-head-btn{
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  transition: color .2s var(--ease);
+}
+.index-head-btn:hover, .index-head-btn[data-dir]{ color: var(--ink); }
+.index-head-btn::after{
+  content: '';
+  width: 0; height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 4px solid currentColor;
+  opacity: 0;
+  transition: opacity .2s var(--ease), transform .2s var(--ease);
+}
+.index-head-btn[data-dir="asc"]::after{ opacity: 0.6; transform: rotate(0deg); }
+.index-head-btn[data-dir="desc"]::after{ opacity: 0.6; transform: rotate(180deg); }
+
 .index-row{
   display: grid;
   grid-template-columns: 3.2fr 1.3fr 1.1fr 0.55fr;
