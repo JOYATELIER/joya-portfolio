@@ -393,7 +393,8 @@ h1,h2,h3,p{ margin:0; }
 @media (max-width: 899px){
   .studio-secondary{ padding-top: 0; }
 }
-.studio-secondary p{ max-width: 42ch; }
+.studio-secondary p{ max-width: 42ch; margin-bottom: 1.4rem; }
+.studio-secondary p:last-child{ margin-bottom: 0; }
 
 /* ============================================================
    Contact
