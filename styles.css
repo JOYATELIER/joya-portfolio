@@ -388,11 +388,7 @@ h1,h2,h3,p{ margin:0; }
   margin-bottom: 1.75rem;
 }
 .studio-primary p{ max-width: 58ch; margin-bottom: 1.4rem; }
-.studio-secondary{ padding-top: calc(var(--fs-h1) * 1.7 + 1.75rem); }
 .studio-secondary .eyebrow{ margin-bottom: 1rem; display:block; }
-@media (max-width: 899px){
-  .studio-secondary{ padding-top: 0; }
-}
 .studio-secondary p{ max-width: 42ch; margin-bottom: 1.4rem; }
 .studio-secondary p:last-child{ margin-bottom: 0; }
 
