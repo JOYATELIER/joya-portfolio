@@ -69,8 +69,8 @@ function header(prefix, active){
 
 function footer(prefix){
   return `<footer class="site-footer wrap">
-  <a href="mailto:hello@joyastudio.com">hello@joyastudio.com</a>
-  <a href="https://instagram.com/joya.studio" target="_blank" rel="noopener">Instagram</a>
+  <a href="mailto:circolojoya@gmail.com">circolojoya@gmail.com</a>
+  <a href="https://instagram.com/joya_aaaaaaaaaaaa" target="_blank" rel="noopener">Instagram</a>
 </footer>`;
 }
 
