@@ -420,6 +420,7 @@ h1,h2,h3,p{ margin:0; }
    Footer
    ============================================================ */
 .site-footer{
+  position: relative;
   border-top: 1px solid var(--hairline);
   padding-block: 1.5rem;
   display: flex;
@@ -429,3 +430,17 @@ h1,h2,h3,p{ margin:0; }
 }
 .site-footer a{ color: var(--ink); }
 .site-footer a:hover{ opacity: 0.6; }
+
+/* Invisible against the page background — reveals only when selected
+   (e.g. Ctrl/Cmd+A). Not a flex child, so it never shifts the footer
+   links either side of it. */
+.built-by{
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  color: var(--paper);
+  font-size: 0.7rem;
+  user-select: text;
+}
+.built-by::selection{ color: var(--ink); background: var(--gray-light); }

@@ -71,6 +71,7 @@ function footer(prefix){
   return `<footer class="site-footer wrap">
   <a href="mailto:circolojoya@gmail.com">circolojoya@gmail.com</a>
   <a href="https://instagram.com/joya_aaaaaaaaaaaa" target="_blank" rel="noopener">Instagram</a>
+  <span class="built-by">Built by Sean Harrison</span>
 </footer>`;
 }
 
