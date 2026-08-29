@@ -105,7 +105,7 @@ h1,h2,h3,p{ margin:0; }
   align-items: center;
   justify-content: space-between;
 }
-.header-logo img{ height: 16px; width: auto; }
+.header-logo img{ height: 22px; width: auto; }
 .header-nav{ display: flex; gap: 2.25rem; }
 .header-nav a{
   font-family: var(--font-display);
@@ -207,7 +207,7 @@ h1,h2,h3,p{ margin:0; }
 .index-row:hover, .index-row:focus-visible{ background: var(--hover-fill); }
 .index-row .p-title{
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: var(--fs-index-title);
   letter-spacing: -0.01em;
 }
@@ -291,7 +291,7 @@ h1,h2,h3,p{ margin:0; }
 .project-info-title{
   grid-column: 1 / span 8;
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--fs-project-title);
   letter-spacing: -0.015em;
   margin-bottom: 1.5rem;
@@ -344,7 +344,7 @@ h1,h2,h3,p{ margin:0; }
 }
 .studio-heading{
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--fs-h1);
   letter-spacing: -0.015em;
   margin-bottom: 1.75rem;
@@ -364,7 +364,7 @@ h1,h2,h3,p{ margin:0; }
 .contact-block{ padding-block: clamp(3rem, 10vh, 6rem); }
 .contact-heading{
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--fs-h1);
   margin-bottom: 2.5rem;
   letter-spacing: -0.015em;
