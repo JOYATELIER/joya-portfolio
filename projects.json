@@ -26,7 +26,7 @@
     "client": "Private client",
     "location": "Barcelona",
     "category": "Residential",
-    "year": "2015",
+    "year": "2025",
     "credit": "Photo: Joya"
   },
   {
@@ -36,7 +36,7 @@
     "client": "Private client",
     "location": "L'Hospitalet de Llobregat",
     "category": "Residential",
-    "year": "2016",
+    "year": "2025",
     "credit": "Images and progress photos: Joya"
   },
   {
@@ -46,7 +46,7 @@
     "client": "Private client",
     "location": "Barcelona",
     "category": "Residential",
-    "year": "2016",
+    "year": "2025",
     "credit": "Images and progress photos: Joya"
   },
   {
@@ -56,7 +56,7 @@
     "client": "Private client",
     "location": "Barcelona",
     "category": "Residential",
-    "year": "2016",
+    "year": "2025",
     "credit": "Images and progress photos: Joya"
   },
   {
@@ -86,7 +86,7 @@
     "client": "Private client",
     "location": "Barcelona",
     "category": "Residential",
-    "year": "2016",
+    "year": "2025",
     "credit": "Project: Joya with Óscar Fonollosa Font"
   }
 ]
