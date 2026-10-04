@@ -1,15 +1,18 @@
 JOYA — cómo cambiar la tipografía del sitio
 ============================================
 
-El sitio usa dos tipografías:
-  - "Archivo"  -> títulos, navegación, textos del índice de proyectos
-  - "Inter"    -> párrafos largos (About, descripciones de proyecto)
+HOY el sitio usa Helvetica Neue, la tipografía del sistema. No se
+descarga ningún archivo de fuente: el navegador usa la Helvetica Neue
+que ya está instalada en la máquina (en Mac y iPhone), y si no la
+tiene, cae a Helvetica o Arial, que son casi idénticas. Por eso el
+sitio carga más rápido y no depende de Google.
 
-Las dos están centralizadas en DOS líneas de styles.css (al principio
-del archivo, dentro de :root):
+    --font-display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-    --font-display: 'Archivo', sans-serif;
-    --font-body: 'Inter', sans-serif;
+Las dos líneas están al principio de styles.css, dentro de :root.
+Si algún día querés dos tipografías distintas (una para títulos y otra
+para textos), poné una fuente diferente en cada línea.
 
 Todo el resto del CSS usa var(--font-display) / var(--font-body) en
 vez de nombrar la fuente directamente — así que para cambiar la

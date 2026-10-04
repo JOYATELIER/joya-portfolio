@@ -29,15 +29,14 @@ function previewFor(project){
   return imgs[0] || 'assets/images/_fallback.jpg';
 }
 
-const HEAD_FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Inter:wght@400;500&display=swap" rel="stylesheet">`;
+// La tipografía es la del sistema (Helvetica Neue / Helvetica / Arial), así que
+// no se carga ninguna fuente externa. Ver FUENTES.txt.
+const HEAD_FONTS = '';
 
 function header(prefix, active){
   const links = [
     ['Projects', 'projects.html'],
     ['Studio', 'studio.html'],
-    ['Contact', 'contact.html'],
   ];
   const navLinks = links.map(([label, href]) =>
     `<a href="${prefix}${href}"${active === label ? ' class="is-active"' : ''}>${label}</a>`
@@ -46,7 +45,7 @@ function header(prefix, active){
 
   return `<header class="site-header" id="siteHeader">
   <div class="header-inner">
-    <a href="${prefix}projects.html" class="header-logo">
+    <a href="${prefix}home.html" class="header-logo">
       <img src="${prefix}assets/joya-logo.svg" alt="JOYA">
     </a>
     <nav class="header-nav">
@@ -68,9 +67,16 @@ function header(prefix, active){
 }
 
 function footer(prefix){
-  return `<footer class="site-footer wrap">
-  <a href="mailto:circolojoya@gmail.com">circolojoya@gmail.com</a>
-  <a href="https://instagram.com/joya_aaaaaaaaaaaa" target="_blank" rel="noopener">Instagram</a>
+  return `<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-contact">
+      <a href="mailto:circolojoya@gmail.com">circolojoya@gmail.com</a>
+      <a href="tel:+34602402094">(+34) 602 402 094</a>
+      <a href="tel:+393663447818">(+39) 366 344 7818</a>
+      <a href="https://instagram.com/joya_aaaaaaaaaaaa" target="_blank" rel="noopener">Follow us on Instagram</a>
+    </div>
+    <div class="footer-place">JOYA / 08012 Barcelona</div>
+  </div>
   <span class="built-by">Built by Sean Harrison</span>
 </footer>`;
 }
@@ -129,6 +135,55 @@ ${footer(prefix)}
 `;
 }
 
+// Carrusel del home: toma las primeras imágenes de cada proyecto y las
+// intercala, para que la portada muestre variedad sin curaduría manual.
+function homeImages(limit = 14){
+  const perProject = projects.map(p => ({ p, imgs: imagesFor(p) })).filter(x => x.imgs.length);
+  const out = [];
+  for (let i = 0; out.length < limit; i++){
+    const before = out.length;
+    for (const { p, imgs } of perProject){
+      if (imgs[i] && out.length < limit) out.push({ src: imgs[i], title: p.title });
+    }
+    if (out.length === before) break;
+  }
+  return out;
+}
+
+function homePage(){
+  const imgs = homeImages();
+  const slides = imgs.map(i =>
+    `      <img src="${i.src}" alt="${i.title}" draggable="false">`).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOYA — Arquitectura e Interiorismo</title>
+<meta name="description" content="JOYA es un estudio de arquitectura, interiorismo y diseño con base en Barcelona.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+${header('', null)}
+
+<main class="home-main">
+  <div class="carousel-wrap home-carousel" aria-label="Selected work">
+    <div class="carousel-track">
+${slides}
+    </div>
+  </div>
+</main>
+
+${footer('')}
+
+<script src="main.js"></script>
+</body>
+</html>
+`;
+}
+
 function indexRow(project){
   const preview = previewFor(project);
   return `    <li>
@@ -161,10 +216,12 @@ async function build(){
     fs.writeFileSync(path.join('projects', `${project.slug}.html`), projectPage(project, '../', prev, next));
   });
 
+  fs.writeFileSync('home.html', homePage());
+
   const rows = projects.map(indexRow).join('\n');
   replaceBetweenMarkers('projects.html', '<!-- INDEX:START -->', '<!-- INDEX:END -->', rows);
 
-  console.log(`Built ${projects.length} project pages + index.`);
+  console.log(`Built ${projects.length} project pages + home (${homeImages().length} fotos) + index.`);
 }
 
 build();

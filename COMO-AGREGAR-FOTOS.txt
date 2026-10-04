@@ -41,12 +41,16 @@ No hace falta que los números salgan consecutivos sin saltos, pero es
 más prolijo si lo están. Para reordenar fotos, es solo cuestión de
 renombrar los números.
 
-A diferencia del sitio de Sean Harrison, acá NO existe el sufijo "-c"
-(no hay un carousel del home que curar aparte): en JOYA, todas las
-fotos que pongas en la carpeta de un proyecto entran directo al
-carrusel de ESE proyecto, en el orden de sus números. La primera
-imagen (la 01) es también la que se usa como preview en el índice de
-/projects.
+A diferencia del sitio de Sean Harrison, acá NO existe el sufijo "-c":
+en JOYA, todas las fotos que pongas en la carpeta de un proyecto
+entran directo al carrusel de ESE proyecto, en el orden de sus
+números. La primera imagen (la 01) es también la que se usa como
+preview en el índice de /projects.
+
+El carrusel de la PORTADA (home.html) tampoco hay que curarlo a mano:
+se arma solo, tomando las primeras fotos de cada proyecto e
+intercalándolas, hasta 14 en total. Si querés que una foto aparezca en
+la portada, alcanza con que sea de las primeras de su proyecto.
 
 
 3) ANTES DE PONER LAS FOTOS: OPTIMIZARLAS (recomendado, no obligatorio)

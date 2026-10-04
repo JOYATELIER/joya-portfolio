@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (splash){
     splash.addEventListener('click', () => {
       splash.classList.add('is-leaving');
-      setTimeout(() => { window.location.href = 'projects.html'; }, 350);
+      setTimeout(() => { window.location.href = 'home.html'; }, 350);
     });
   }
 
