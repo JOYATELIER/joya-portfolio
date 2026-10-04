@@ -157,8 +157,8 @@ function homeImages(limit = 14){
 
 function homePage(){
   const imgs = homeImages();
-  const slides = imgs.map(i =>
-    `      <img src="${i.src}" alt="${i.title}" draggable="false">`).join('\n');
+  const slides = imgs.map((i, n) =>
+    `      <img src="${i.src}" alt="${i.title}" draggable="false"${n ? '' : ' class="is-on"'}>`).join('\n');
 
   return `<!DOCTYPE html>
 <html lang="es">
@@ -175,10 +175,8 @@ ${icons('')}
 ${header('', null)}
 
 <main class="home-main">
-  <div class="carousel-wrap home-carousel" aria-label="Selected work">
-    <div class="carousel-track">
+  <div class="home-slides" id="homeSlides" aria-label="Selected work">
 ${slides}
-    </div>
   </div>
 </main>
 

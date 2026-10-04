@@ -74,8 +74,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Project carousel ---------- */
+  /* ---------- Home: una imagen por vez ---------- */
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const slides = document.getElementById('homeSlides');
+  if (slides){
+    const imgs = Array.from(slides.querySelectorAll('img'));
+    let current = 0, timer = null;
+
+    function show(n){
+      current = (n + imgs.length) % imgs.length;
+      imgs.forEach((im, k) => im.classList.toggle('is-on', k === current));
+    }
+    function arm(){
+      clearInterval(timer);
+      if (!reduceMotion) timer = setInterval(() => show(current + 1), 4500);
+    }
+
+    slides.addEventListener('click', () => { show(current + 1); arm(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight'){ show(current + 1); arm(); }
+      else if (e.key === 'ArrowLeft'){ show(current - 1); arm(); }
+    });
+
+    let startX = 0;
+    slides.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].clientX; }, { passive: true });
+    slides.addEventListener('touchend', (e) => {
+      const d = e.changedTouches[0].clientX - startX;
+      if (Math.abs(d) > 45){ show(current + (d < 0 ? 1 : -1)); arm(); }
+    }, { passive: true });
+
+    show(0);
+    arm();
+  }
+
+  /* ---------- Project carousel ---------- */
 
   document.querySelectorAll('.carousel-wrap').forEach(wrap => {
     const track = wrap.querySelector('.carousel-track');
