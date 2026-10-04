@@ -33,6 +33,10 @@ function previewFor(project){
 // no se carga ninguna fuente externa. Ver FUENTES.txt.
 const HEAD_FONTS = '';
 
+const icons = prefix => `<link rel="icon" href="${prefix}assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="${prefix}assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="${prefix}assets/favicon-180.png">`;
+
 function header(prefix, active){
   const links = [
     ['Projects', 'projects.html'],
@@ -93,6 +97,7 @@ function projectPage(project, prefix, prevProject, nextProject){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${project.title} — JOYA</title>
 ${HEAD_FONTS}
+${icons(prefix)}
 <link rel="stylesheet" href="${prefix}styles.css">
 </head>
 <body>
@@ -162,6 +167,7 @@ function homePage(){
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JOYA — Arquitectura e Interiorismo</title>
 <meta name="description" content="JOYA es un estudio de arquitectura, interiorismo y diseño con base en Barcelona.">
+${icons('')}
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
