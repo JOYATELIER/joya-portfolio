@@ -33,6 +33,11 @@ const HEAD_FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Inter:wght@400;500&display=swap" rel="stylesheet">`;
 
+const VERCEL_ANALYTICS = `<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>`;
+
 function header(prefix, active){
   const links = [
     ['Projects', 'projects.html'],
@@ -88,6 +93,7 @@ function projectPage(project, prefix, prevProject, nextProject){
 <title>${project.title} — JOYA</title>
 ${HEAD_FONTS}
 <link rel="stylesheet" href="${prefix}styles.css">
+${VERCEL_ANALYTICS}
 </head>
 <body>
 
