@@ -79,7 +79,6 @@ function footer(prefix){
       <a href="tel:+393663447818">(+39) 366 344 7818</a>
       <a href="https://instagram.com/joya_aaaaaaaaaaaa" target="_blank" rel="noopener">Follow us on Instagram</a>
     </div>
-    <div class="footer-place">JOYA / 08012 Barcelona</div>
   </div>
   <span class="built-by">Built by Sean Harrison</span>
 </footer>`;
@@ -87,8 +86,7 @@ function footer(prefix){
 
 function projectPage(project, prefix, prevProject, nextProject){
   const imgs = imagesFor(project);
-  const carouselImgs = imgs.map(src => `      <img src="${prefix}${src}" alt="${project.title}" draggable="false">`).join('\n');
-  const carouselClass = imgs.length ? '' : ' no-images';
+  const galleryImgs = imgs.map(src => `    <img src="${prefix}${src}" alt="${project.title}" loading="lazy">`).join('\n');
 
   return `<!DOCTYPE html>
 <html lang="es">
@@ -105,12 +103,6 @@ ${icons(prefix)}
 ${header(prefix, 'Projects')}
 
 <main class="project-main">
-  <div class="carousel-wrap${carouselClass}" aria-label="${project.title} gallery">
-    <div class="carousel-track">
-${carouselImgs}
-    </div>
-  </div>
-
   <div class="wrap project-info">
     <div class="project-info-grid">
       <h1 class="project-info-title">${project.title}</h1>
@@ -123,6 +115,10 @@ ${carouselImgs}
         <div class="m-row"><span class="m-label">Credits</span>${project.credit}</div>
       </div>
     </div>
+  </div>
+
+  <div class="project-gallery" aria-label="${project.title} gallery">
+${galleryImgs}
   </div>
 
   <nav class="project-nav wrap">

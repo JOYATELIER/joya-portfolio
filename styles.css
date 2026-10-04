@@ -328,28 +328,19 @@ h1,h2,h3,p{ margin:0; }
    ============================================================ */
 .project-main{ padding-top: 72px; }
 
-.carousel-wrap{
-  width: 100vw;
-  overflow: hidden;
-  cursor: grab;
-  user-select: none;
-  touch-action: pan-y;
-}
-.carousel-wrap.is-dragging{ cursor: grabbing; }
-.carousel-track{
+.project-gallery{
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--gutter);
-  padding-block: clamp(1rem, 2vh, 1.5rem);
-  will-change: transform;
+  gap: clamp(1.25rem, 3.5vh, 2.75rem);
+  padding: 0 var(--margin) clamp(3rem, 8vh, 6rem);
 }
-.carousel-track img{
-  height: clamp(280px, 62vh, 640px);
+.project-gallery img{
   width: auto;
-  flex: none;
-  -webkit-user-drag: none;
+  height: auto;
+  max-width: min(100%, 1180px);
+  max-height: 90vh;
 }
-.carousel-wrap.no-images{ display:none; }
 
 .project-info{
   padding-block: clamp(2.5rem, 6vh, 4.5rem) clamp(3rem, 8vh, 6rem);
@@ -473,11 +464,9 @@ h1,h2,h3,p{ margin:0; }
 .footer-contact{ display: flex; flex-direction: column; }
 .footer-contact a{ color: var(--ink); line-height: 1.55; width: fit-content; }
 .footer-contact a:hover{ opacity: 0.55; }
-.footer-place{ text-align: right; white-space: nowrap; }
 @media (max-width: 600px){
   .footer-inner{ flex-direction: column; align-items: flex-start; gap: 1.2rem; }
-  .footer-place{ text-align: left; }
-}
+  }
 
 /* Invisible against the page background — reveals only when selected
    (e.g. Ctrl/Cmd+A). Not a flex child, so it never shifts the footer
