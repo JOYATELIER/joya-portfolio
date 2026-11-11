@@ -1,6 +1,22 @@
 JOYA — cómo agregar/quitar/editar proyectos y sus fotos
 =========================================================
 
+AVISO (noviembre 2026): la sección Projects está fuera del sitio
+mientras se repiensa. No aparece en el menú y projects.html y las
+páginas de cada proyecto redirigen al home. Todo lo demás sigue igual:
+los archivos, projects.json y las fotos están intactos, las páginas se
+siguen generando, y el pase de imágenes del home se sigue armando a
+partir de estos proyectos. Para volver a publicar la sección:
+
+  1. en build-project-pages.mjs, descomentar la línea
+     ['Projects', 'projects.html'] dentro de header()
+  2. en vercel.json, borrar el bloque "redirects"
+
+Las instrucciones de abajo siguen siendo válidas tal cual: agregar o
+cambiar fotos hoy afecta al pase del home, y quedará listo para cuando
+la sección vuelva.
+
+
 1) UBICACIÓN
 
 Cada proyecto tiene su propia carpeta de imágenes:

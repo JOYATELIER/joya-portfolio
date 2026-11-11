@@ -38,8 +38,12 @@ const icons = prefix => `<link rel="icon" href="${prefix}assets/favicon.svg" typ
 <link rel="apple-touch-icon" href="${prefix}assets/favicon-180.png">`;
 
 function header(prefix, active){
+  // Projects está fuera del menú mientras Marian repiensa la sección.
+  // Las páginas se siguen generando y projects.json queda intacto: para
+  // volver a publicarlas basta con descomentar esta línea y quitar las
+  // redirecciones de vercel.json.
   const links = [
-    ['Projects', 'projects.html'],
+    // ['Projects', 'projects.html'],
     ['Studio', 'studio.html'],
   ];
   const navLinks = links.map(([label, href]) =>
