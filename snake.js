@@ -21,7 +21,20 @@
   const PAPER = '#ffffff';
   const GRAY = '#8c8c87';
   const HAIRLINE = '#e4e4e1';
-  const RED = '#ED1C24';   // el rojo original de JOYA, que ya no está en el logo
+  const RED = '#ED1C24';   // el rojo original de JOYA, por si no carga el icono
+
+  // La "manzana" es el favicon: el cuadrado rojo con la J. La ruta se lee
+  // del propio <head>, así resuelve bien tanto desde la raíz como desde
+  // /en/ o /projects/. Se usa el PNG de 180 px y no el SVG porque algunos
+  // navegadores no saben a qué tamaño dibujar un SVG sin width/height.
+  const apple = document.querySelector('link[rel="apple-touch-icon"]');
+  const icon = apple || document.querySelector('link[rel="icon"][sizes]');
+  let foodImg = null;
+  if (icon) {
+    const img = new Image();
+    img.onload = () => { foodImg = img; };
+    img.src = icon.href;
+  }
 
   const CELLS = 21;        // tablero cuadrado de 21 x 21
   const START_MS = 130;    // milisegundos por paso al empezar
@@ -179,8 +192,14 @@
       ctx.strokeRect(0.5, 0.5, px - 1, px - 1);
 
       if (food) {
-        ctx.fillStyle = RED;
-        ctx.fillRect(food.x * cell + cell * 0.22, food.y * cell + cell * 0.22, cell * 0.56, cell * 0.56);
+        const pad = cell * 0.12;
+        const size = cell - pad * 2;
+        if (foodImg) {
+          ctx.drawImage(foodImg, food.x * cell + pad, food.y * cell + pad, size, size);
+        } else {
+          ctx.fillStyle = RED;
+          ctx.fillRect(food.x * cell + cell * 0.22, food.y * cell + cell * 0.22, cell * 0.56, cell * 0.56);
+        }
       }
 
       ctx.fillStyle = INK;
