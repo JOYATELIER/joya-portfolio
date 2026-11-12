@@ -216,7 +216,6 @@ ${phones}
       <a href="${CONTACT.instagram}" target="_blank" rel="noopener">${t.footer.instagram}</a>
     </div>
   </div>
-  <span class="built-by">Built by Sean Harrison</span>
 </footer>`;
 }
 
