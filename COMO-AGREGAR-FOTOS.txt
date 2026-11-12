@@ -18,6 +18,32 @@ cambiar fotos hoy afecta al pase del home, y quedará listo para cuando
 la sección vuelva.
 
 
+DESDE GOOGLE DRIVE (preparado, aún sin activar)
+
+Existe sync-home-drive.mjs, que lee una carpeta de Drive, se baja las
+fotos, las endereza, las encoge a 2400 px, las pasa a JPEG optimizado
+y deja assets/images/home/ igual que la carpeta. Lo que se borra de
+Drive se borra de la web.
+
+EL ORDEN ES EL DE LOS NOMBRES EN DRIVE, el mismo que ve el estudio
+ordenando la carpeta por nombre. Por eso los archivos en Drive se
+numeran 01-, 02-, 03-... y el texto que va detrás del número acaba
+siendo la descripción de la imagen en la web.
+
+Las credenciales están en Vercel como variables de entorno
+(GOOGLE_API_KEY y DRIVE_FOLDER_ID), nunca en el repositorio.
+
+Para activarlo, en vercel.json poner como buildCommand:
+
+    node sync-home-drive.mjs && node build-project-pages.mjs
+
+y cambiar installCommand por: npm install
+
+Si Drive no responde o faltan las credenciales, el script no toca
+nada y se publican las fotos que ya están en el repositorio: un fallo
+de Google no deja la portada en blanco ni rompe el despliegue.
+
+
 LAS FOTOS DE LA PORTADA (noviembre 2026)
 
 Las fotos que pasan en el home salen de su propia carpeta:
