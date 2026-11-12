@@ -79,7 +79,7 @@ const CONTENT = {
       title: 'Info — JOYA',
       description: 'JOYA es un estudio de arquitectura, interiorismo y set design con base en Barcelona y proyectos a nivel internacional.',
       primary: [
-        '<strong>JOYA</strong> es un estudio de arquitectura, interiorismo y set design con base en Barcelona y proyectos a nivel internacional.',
+        'JOYA es un estudio de arquitectura, interiorismo y set design con base en Barcelona y proyectos a nivel internacional.',
         'Desarrollamos proyectos desde el concepto hasta su ejecución, con una mirada integral, funcional y material.',
       ],
       servicesLabel: 'Servicios',
@@ -109,7 +109,7 @@ const CONTENT = {
       title: 'Info — JOYA',
       description: 'JOYA is an architecture, interior design and set design studio based in Barcelona, working on projects internationally.',
       primary: [
-        '<strong>JOYA</strong> is an architecture, interior design and set design studio based in Barcelona, working on projects internationally.',
+        'JOYA is an architecture, interior design and set design studio based in Barcelona, working on projects internationally.',
         'We develop projects from concept through to completion, with an integrated approach to space, function and material.',
       ],
       servicesLabel: 'Services',
@@ -358,17 +358,16 @@ ${para(t.studio.primary)}
     <div class="studio-secondary">
       <span class="eyebrow">${t.studio.servicesLabel}</span>
       <p>${t.studio.services}</p>
-      <span class="eyebrow">${t.studio.contactLabel}</span>
+      <span class="eyebrow is-strong">${t.studio.contactLabel}</span>
       <p class="info-contact">
         <a href="mailto:${CONTACT.email}">${CONTACT.email}</a><br>
-        <a href="${CONTACT.phones[0].href}">${CONTACT.phones[0].label}</a><br>
+${CONTACT.phones.map(p => `        <a href="${p.href}">${p.label}</a><br>`).join('\n')}
+        <a href="${CONTACT.instagram}" target="_blank" rel="noopener">${t.footer.instagram}</a><br>
         ${t.studio.contactPlace}
       </p>
     </div>
   </div>
 </main>
-
-${footer(lang)}
 
 <script src="${prefix}main.js"></script>
 </body>

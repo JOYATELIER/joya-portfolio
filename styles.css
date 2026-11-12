@@ -440,6 +440,9 @@ h1,h2,h3,p{ margin:0; }
 .studio-secondary .eyebrow ~ .eyebrow{ margin-top: 2.25rem; }
 .info-contact a{ color: var(--ink); }
 .info-contact a:hover{ opacity: 0.55; }
+/* El rótulo de Contacto va en negro y en negrita, a diferencia del resto
+   de epígrafes: lo pidió el cliente para darle más peso. */
+.studio-secondary .eyebrow.is-strong{ color: var(--ink); font-weight: 700; }
 
 /* ============================================================
    Contact
