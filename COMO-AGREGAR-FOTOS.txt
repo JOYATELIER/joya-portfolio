@@ -18,7 +18,7 @@ cambiar fotos hoy afecta al pase del home, y quedará listo para cuando
 la sección vuelva.
 
 
-DESDE GOOGLE DRIVE (preparado, aún sin activar)
+DESDE GOOGLE DRIVE (activo)
 
 Existe sync-home-drive.mjs, que lee una carpeta de Drive, se baja las
 fotos, las endereza, las encoge a 2400 px, las pasa a JPEG optimizado
@@ -33,11 +33,8 @@ siendo la descripción de la imagen en la web.
 Las credenciales están en Vercel como variables de entorno
 (GOOGLE_API_KEY y DRIVE_FOLDER_ID), nunca en el repositorio.
 
-Para activarlo, en vercel.json poner como buildCommand:
-
-    node sync-home-drive.mjs && node build-project-pages.mjs
-
-y cambiar installCommand por: npm install
+Ya está enchufado: vercel.json ejecuta sync-home-drive.mjs antes del
+generador en cada publicación.
 
 Si Drive no responde o faltan las credenciales, el script no toca
 nada y se publican las fotos que ya están en el repositorio: un fallo

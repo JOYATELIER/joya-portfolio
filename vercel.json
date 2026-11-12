@@ -1,6 +1,6 @@
 {
-  "buildCommand": "node build-project-pages.mjs",
-  "installCommand": "echo 'no install needed'",
+  "buildCommand": "node sync-home-drive.mjs && node build-project-pages.mjs",
+  "installCommand": "npm install",
   "outputDirectory": ".",
   "redirects": [
     { "source": "/projects.html", "destination": "/home.html", "permanent": false },
