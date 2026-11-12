@@ -51,9 +51,14 @@ Reglas:
     intercaladas), para que nunca se quede en blanco.
 
 Tamaño: las fotos se sirven tal cual, no se reducen solas. Una foto
-recién sacada del móvil puede pesar 8 MB y hacer que la portada tarde
-muchísimo en cargar, sobre todo con datos. Antes de subir, exportarla
-a un ancho de unos 2400 px. Las que hay ahora pesan entre 14 y 580 KB.
+recién sacada del móvil puede pesar 8 MB. Antes de subir, exportarla a
+un ancho de unos 2400 px y a JPEG. Las 18 que hay ahora suman 4 MB en
+disco; el navegador solo descarga las dos primeras al entrar (unos
+700 KB) y va pidiendo el resto a medida que pasan.
+
+Ojo también con la orientación: si una foto se ve tumbada en la web
+pero bien en el ordenador, es que lleva la rotación en los metadatos.
+Hay que girarla y volver a guardarla antes de subirla.
 
 
 DOS IDIOMAS (noviembre 2026)

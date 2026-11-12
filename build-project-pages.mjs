@@ -334,8 +334,13 @@ function homeImages(limit = 14){
 function homePage(lang){
   const t = CONTENT[lang];
   const prefix = prefixFor(lang);
-  const slides = homeImages().map((i, n) =>
-    `      <img src="${prefix}${i.src}" alt="${i.title}" draggable="false"${n ? '' : ' class="is-on"'}>`).join('\n');
+  // Solo la primera foto lleva src: las demás viajan en data-src y main.js
+  // las pide justo antes de que toquen. Si se pusieran todas, el navegador
+  // se descargaría la portada entera de golpe (varios MB) para enseñar una.
+  const slides = homeImages().map((i, n) => n === 0
+    ? `      <img src="${prefix}${i.src}" alt="${i.title}" draggable="false" class="is-on" fetchpriority="high">`
+    : `      <img data-src="${prefix}${i.src}" alt="${i.title}" draggable="false">`
+  ).join('\n');
 
   return `<!DOCTYPE html>
 <html lang="${t.htmlLang}">

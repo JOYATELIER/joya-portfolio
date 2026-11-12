@@ -82,8 +82,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgs = Array.from(slides.querySelectorAll('img'));
     let current = 0, timer = null;
 
+    // Las fotos, salvo la primera, llegan con data-src y sin src: se piden
+    // al tocarles el turno. Se carga también la siguiente, para que ya esté
+    // en el navegador cuando toque y el cambio no parpadee.
+    function load(n){
+      const im = imgs[(n + imgs.length) % imgs.length];
+      if (im && !im.getAttribute('src') && im.dataset.src){
+        im.setAttribute('src', im.dataset.src);
+      }
+    }
+
     function show(n){
       current = (n + imgs.length) % imgs.length;
+      load(current);
+      load(current + 1);
       imgs.forEach((im, k) => im.classList.toggle('is-on', k === current));
     }
     function arm(){
