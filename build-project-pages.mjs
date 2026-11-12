@@ -358,7 +358,7 @@ ${header(lang, 'studio.html', 'studio')}
 ${para(t.studio.primary)}
     </div>
     <div class="studio-secondary">
-      <span class="eyebrow">${t.studio.servicesLabel}</span>
+      <span class="eyebrow is-strong">${t.studio.servicesLabel}</span>
       <p>${t.studio.services}</p>
       <span class="eyebrow is-strong">${t.studio.contactLabel}</span>
       <p class="info-contact">
