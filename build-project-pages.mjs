@@ -283,7 +283,37 @@ ${footer(lang)}
 
 // Carrusel del home: toma las primeras imágenes de cada proyecto y las
 // intercala, para que la portada muestre variedad sin curaduría manual.
-function homeImages(limit = 14){
+// La portada se controla desde assets/images/home/: las fotos que haya
+// ahí son las que salen, en el orden del número con el que empiezan.
+// Es la carpeta que gestiona el estudio, independiente de los proyectos.
+const HOME_DIR = path.join('assets', 'images', 'home');
+
+function homeFolderImages(){
+  if (!fs.existsSync(HOME_DIR)) return [];
+  return fs.readdirSync(HOME_DIR)
+    .filter(f => IMG_RE.test(f))
+    .sort((a, b) => parseInt(a.match(IMG_RE)[1], 10) - parseInt(b.match(IMG_RE)[1], 10))
+    .map(f => ({ src: `assets/images/home/${f}`, title: altFromFilename(f) }));
+}
+
+// El nombre del archivo hace doble trabajo: el número ordena y el resto
+// se convierte en el texto alternativo de la imagen. Así, llamándolo
+// "03-cocina-providencia.jpg", el alt queda "Cocina providencia" sin
+// tener que mantener una lista aparte.
+function altFromFilename(file){
+  const words = file
+    .replace(IMG_RE, '$2')          // fuera el número y la extensión
+    .replace(/^-/, '')
+    .replace(/[-_]+/g, ' ')
+    .trim();
+  if (!words) return 'JOYA';
+  return words.charAt(0).toUpperCase() + words.slice(1);
+}
+
+// Reserva: si la carpeta está vacía o no existe, se vuelve al
+// comportamiento anterior (primeras fotos de cada proyecto, intercaladas),
+// para que la portada nunca se quede en blanco por un descuido.
+function projectImages(limit){
   const perProject = projects.map(p => ({ p, imgs: imagesFor(p) })).filter(x => x.imgs.length);
   const out = [];
   for (let i = 0; out.length < limit; i++){
@@ -294,6 +324,11 @@ function homeImages(limit = 14){
     if (out.length === before) break;
   }
   return out;
+}
+
+function homeImages(limit = 14){
+  const own = homeFolderImages();
+  return own.length ? own : projectImages(limit);
 }
 
 function homePage(lang){

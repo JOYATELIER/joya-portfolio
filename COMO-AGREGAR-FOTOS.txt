@@ -18,6 +18,44 @@ cambiar fotos hoy afecta al pase del home, y quedará listo para cuando
 la sección vuelva.
 
 
+LAS FOTOS DE LA PORTADA (noviembre 2026)
+
+Las fotos que pasan en el home salen de su propia carpeta:
+
+    assets/images/home/
+
+Las que estén ahí son las que se ven, y se ven en el orden del número
+con el que empieza el archivo. Nada más. Para cambiar la portada se
+agregan, se quitan o se renumeran archivos en esa carpeta; los
+proyectos no se tocan.
+
+    01-fachada-mediterraneo.jpg   <- primera
+    02-maria-aguilo.jpg           <- segunda
+    ...
+
+Reglas:
+
+  - El archivo TIENE que empezar por número. Uno que no empiece por
+    número se ignora sin avisar (útil para apartar una foto sin
+    borrarla; molesto si subís IMG_4471.jpg y no entendés por qué no
+    sale).
+  - Los números no hace falta que sean seguidos: 01, 05, 20 funciona
+    igual, solo importa el orden.
+  - El texto que va después del número se convierte en la descripción
+    de la imagen para buscadores y lectores de pantalla. Vale la pena
+    nombrarlas con sentido: "03-cocina-providencia.jpg" queda mejor
+    que "03-foto.jpg".
+  - Formatos: jpg, png o webp.
+  - Si la carpeta queda vacía, la portada vuelve sola al
+    comportamiento viejo (primeras fotos de cada proyecto,
+    intercaladas), para que nunca se quede en blanco.
+
+Tamaño: las fotos se sirven tal cual, no se reducen solas. Una foto
+recién sacada del móvil puede pesar 8 MB y hacer que la portada tarde
+muchísimo en cargar, sobre todo con datos. Antes de subir, exportarla
+a un ancho de unos 2400 px. Las que hay ahora pesan entre 14 y 580 KB.
+
+
 DOS IDIOMAS (noviembre 2026)
 
 El sitio se publica en español e inglés desde una sola fuente:
