@@ -66,7 +66,7 @@ const pathFor = (lang, page) => (lang === DEFAULT_LANG ? page : `${lang}/${page}
 const CONTENT = {
   es: {
     htmlLang: 'es',
-    nav: { studio: 'Estudio' },
+    nav: { studio: 'Info' },
     menu: { open: 'Menú', close: 'Cerrar', aria: 'Abrir menú', ariaClose: 'Cerrar menú' },
     switchLabel: 'EN',
     switchAria: 'View this page in English',
@@ -76,19 +76,16 @@ const CONTENT = {
       slidesAria: 'Trabajos seleccionados',
     },
     studio: {
-      title: 'Estudio — JOYA',
-      description: 'JOYA es un estudio de arquitectura e interiorismo fundado por Riccardo y Mariano, con base en Barcelona.',
+      title: 'Info — JOYA',
+      description: 'JOYA es un estudio de arquitectura, interiorismo y set design con base en Barcelona y proyectos a nivel internacional.',
       primary: [
-        'JOYA es un estudio de arquitectura e interiorismo fundado por Riccardo y Mariano tras coincidir profesionalmente en Barcelona.',
-        'La combinación de sus distintas trayectorias permite abordar cada proyecto desde una mirada amplia, integrando arquitectura, interiores y diseño en una propuesta coherente. El estudio trabaja en diferentes escalas, prestando especial atención a la claridad espacial, la materialidad y la relación entre cada intervención y su contexto.',
-        'Entendemos el diseño como un proceso de síntesis: identificar lo esencial, ordenar las necesidades y convertirlas en espacios precisos, funcionales y con una identidad propia.',
+        '<strong>JOYA</strong> es un estudio de arquitectura, interiorismo y set design con base en Barcelona y proyectos a nivel internacional.',
+        'Desarrollamos proyectos desde el concepto hasta su ejecución, con una mirada integral, funcional y material.',
       ],
-      secondaryEyebrow: '¿Qué hacemos?',
-      secondary: [
-        'Desarrollamos proyectos de arquitectura e interiorismo a medida, desde las primeras decisiones conceptuales hasta su definición técnica y ejecución.',
-        'El alcance de cada colaboración se adapta a las necesidades del proyecto e incluye diseño, documentación, coordinación técnica y seguimiento de obra.',
-        'También trabajamos junto a otros estudios de arquitectura e interiorismo como equipo externo, sumándonos puntualmente a sus proyectos allí donde necesiten refuerzo.',
-      ],
+      servicesLabel: 'Servicios',
+      services: 'Arquitectura · Interiorismo · Set Design · Colaboraciones creativas',
+      contactLabel: 'Contacto',
+      contactPlace: 'Barcelona · Worldwide',
     },
     footer: { instagram: 'Síguenos en Instagram' },
     project: {
@@ -99,7 +96,7 @@ const CONTENT = {
 
   en: {
     htmlLang: 'en',
-    nav: { studio: 'Studio' },
+    nav: { studio: 'Info' },
     menu: { open: 'Menu', close: 'Close', aria: 'Open menu', ariaClose: 'Close menu' },
     switchLabel: 'ES',
     switchAria: 'Ver esta página en español',
@@ -109,19 +106,16 @@ const CONTENT = {
       slidesAria: 'Selected work',
     },
     studio: {
-      title: 'Studio — JOYA',
-      description: 'JOYA is an architecture and interior design studio founded by Riccardo and Mariano, based in Barcelona.',
+      title: 'Info — JOYA',
+      description: 'JOYA is an architecture, interior design and set design studio based in Barcelona, working on projects internationally.',
       primary: [
-        'JOYA is an architecture and interior design studio founded by Riccardo and Mariano after their paths crossed professionally in Barcelona.',
-        'The combination of their different backgrounds allows each project to be approached from a broad perspective, bringing architecture, interiors and design together into a coherent proposal. The studio works across different scales, with particular attention to spatial clarity, materiality and the relationship between each intervention and its context.',
-        'We understand design as a process of synthesis: identifying what is essential, ordering needs and turning them into precise, functional spaces with an identity of their own.',
+        '<strong>JOYA</strong> is an architecture, interior design and set design studio based in Barcelona, working on projects internationally.',
+        'We develop projects from concept through to completion, with an integrated approach to space, function and material.',
       ],
-      secondaryEyebrow: 'What we do',
-      secondary: [
-        'We develop bespoke architecture and interior design projects, from the first conceptual decisions through to technical definition and construction.',
-        'The scope of each collaboration adapts to the needs of the project and covers design, documentation, technical coordination and site supervision.',
-        'We also work alongside other architecture and interior design studios as an external team, joining their projects wherever extra support is needed.',
-      ],
+      servicesLabel: 'Services',
+      services: 'Architecture · Interior Design · Set Design · Creative Collaborations',
+      contactLabel: 'Contact',
+      contactPlace: 'Barcelona · Worldwide',
     },
     footer: { instagram: 'Follow us on Instagram' },
     project: {
@@ -363,8 +357,14 @@ ${header(lang, 'studio.html', 'studio')}
 ${para(t.studio.primary)}
     </div>
     <div class="studio-secondary">
-      <span class="eyebrow">${t.studio.secondaryEyebrow}</span>
-${para(t.studio.secondary)}
+      <span class="eyebrow">${t.studio.servicesLabel}</span>
+      <p>${t.studio.services}</p>
+      <span class="eyebrow">${t.studio.contactLabel}</span>
+      <p class="info-contact">
+        <a href="mailto:${CONTACT.email}">${CONTACT.email}</a><br>
+        <a href="${CONTACT.phones[0].href}">${CONTACT.phones[0].label}</a><br>
+        ${t.studio.contactPlace}
+      </p>
     </div>
   </div>
 </main>
