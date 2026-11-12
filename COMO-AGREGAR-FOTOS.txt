@@ -9,12 +9,36 @@ siguen generando, y el pase de imágenes del home se sigue armando a
 partir de estos proyectos. Para volver a publicar la sección:
 
   1. en build-project-pages.mjs, descomentar la línea
-     ['Projects', 'projects.html'] dentro de header()
+     ['projects', t.nav.projects, 'projects.html'] dentro de header(),
+     y añadir la etiqueta nav.projects a los dos idiomas en CONTENT
   2. en vercel.json, borrar el bloque "redirects"
 
 Las instrucciones de abajo siguen siendo válidas tal cual: agregar o
 cambiar fotos hoy afecta al pase del home, y quedará listo para cuando
 la sección vuelva.
+
+
+DOS IDIOMAS (noviembre 2026)
+
+El sitio se publica en español e inglés desde una sola fuente:
+
+    español  ->  /home.html        /studio.html
+    inglés   ->  /en/home.html     /en/studio.html
+
+TODO el texto visible (menú, títulos, descripciones, los párrafos del
+estudio, el pie) vive en el objeto CONTENT, arriba de
+build-project-pages.mjs. Para cambiar una frase se edita ahí, en los
+dos idiomas, y se regenera: los archivos .html NO se editan a mano,
+porque el build los sobrescribe.
+
+El correo y los teléfonos están una sola vez, en CONTACT, y salen
+iguales en los dos idiomas.
+
+Las páginas de proyecto siguen generándose solo en español, porque los
+datos (título, rol, créditos) vienen de projects.json y no hay
+traducción. Como la sección está fuera del sitio, hoy no se nota.
+Cuando vuelva hay que decidir si se traduce projects.json o se deja en
+un idioma a propósito.
 
 
 1) UBICACIÓN

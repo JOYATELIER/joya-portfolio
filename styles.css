@@ -127,6 +127,11 @@ h1,h2,h3,p{ margin:0; }
 }
 .header-nav a:hover::after, .header-nav a.is-active::after{ transform: scaleX(1); }
 
+/* Conmutador de idioma: vive en el mismo menú pero atenuado, para que se
+   lea como un ajuste y no como una sección más. */
+.header-nav a.lang-switch{ opacity: 0.4; }
+.header-nav a.lang-switch:hover{ opacity: 1; }
+
 .menu-toggle{ display:none; }
 
 /* Mobile menu overlay */
@@ -149,6 +154,14 @@ h1,h2,h3,p{ margin:0; }
   font-size: clamp(2rem, 8vw, 3rem);
   letter-spacing: -0.01em;
   padding-block: 0.4rem;
+}
+/* En el menú móvil los enlaces son enormes; el idioma va chico y aparte. */
+.mobile-menu-links a.lang-switch{
+  font-size: var(--fs-nav);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 720px){
