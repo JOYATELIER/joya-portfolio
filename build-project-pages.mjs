@@ -275,6 +275,7 @@ ${galleryImgs}
 ${footer(lang)}
 
 <script src="${prefix}main.js"></script>
+<script src="${prefix}snake.js" defer></script>
 </body>
 </html>
 `;
@@ -325,6 +326,7 @@ ${slides}
 ${footer(lang)}
 
 <script src="${prefix}main.js"></script>
+<script src="${prefix}snake.js" defer></script>
 </body>
 </html>
 `;
@@ -370,6 +372,7 @@ ${CONTACT.phones.map(p => `        <a href="${p.href}">${p.label}</a><br>`).join
 </main>
 
 <script src="${prefix}main.js"></script>
+<script src="${prefix}snake.js" defer></script>
 </body>
 </html>
 `;
